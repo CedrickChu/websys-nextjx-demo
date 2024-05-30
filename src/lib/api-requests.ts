@@ -1,5 +1,16 @@
 import { FilteredUser, UserLoginResponse, UserResponse } from "./types";
-import axios from 'axios';
+import { PrismaClient } from "@prisma/client";
+
+const globalForPrisma = global as unknown as { prisma: PrismaClient };
+
+export const prisma =
+  globalForPrisma.prisma ||
+  new PrismaClient({
+    log: ["query"],
+  });
+
+if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = prisma;
+
 
 const SERVER_ENDPOINT = process.env.SERVER_ENDPOINT || "http://localhost:3000";
 
@@ -105,24 +116,19 @@ export async function apiUpdateAuthUser(token: string, userData: UserData){
     updatedAt?: string;
   }
 
-export async function apiGetAllUsers(token?: string): Promise<FilteredUser[]> {
-    const headers: Record<string, string> = {
-      "Content-Type": "application/json",
-    };
-  
-    if (token) {
-      headers["Authorization"] = `Bearer ${token}`;
+// Function to fetch all users from the server
+export async function apiGetAllUsers() {
+    try {
+      const response = await fetch(`${SERVER_ENDPOINT}/api/users/all`);
+      if (!response.ok) {
+        throw new Error('Failed to fetch users');
+      }
+      return response.json();
+    } catch (error) {
+      console.error('Error fetching users:', error);
+      throw error;
     }
-  
-    const response = await fetch(`${SERVER_ENDPOINT}/api/users/all`, {
-      method: "GET",
-      credentials: "include",
-      headers,
-    });
-  
-    return handleResponse<FilteredUser[]>(response);
   }
-
 
   export async function getUserById(userId: string, token?: string): Promise<FilteredUser> {
     const headers: Record<string, string> = {
@@ -141,3 +147,5 @@ export async function apiGetAllUsers(token?: string): Promise<FilteredUser[]> {
   
     return handleResponse<UserResponse>(response).then((data) => data.data.user);
   }
+
+ 
