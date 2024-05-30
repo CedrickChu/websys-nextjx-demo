@@ -6,6 +6,7 @@ import useStore from "@/store";
 import { apiLogoutUser } from "@/lib/api-requests";
 import { useRouter } from "next/navigation";
 
+
 const Header = () => {
   const store = useStore();
   const user = useSession();
