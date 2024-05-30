@@ -1,0 +1,41 @@
+{
+  "name": "nextjs13-user-signin-signup",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^3.4.2",
+    "@prisma/client": "^5.14.0",
+    "@types/node": "20.12.13",
+    "@types/react": "18.3.3",
+    "@types/react-dom": "18.3.0",
+    "autoprefixer": "10.4.19",
+    "bcryptjs": "^2.4.3",
+    "eslint": "9.3.0",
+    "eslint-config-next": "14.2.3",
+    "glob": "^10.4.1",
+    "inflight": "^1.0.6",
+    "jose": "^5.3.0",
+    "next": "^14.2.3",
+    "postcss": "8.4.38",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-hook-form": "^7.51.5",
+    "react-hot-toast": "^2.4.1",
+    "rimraf": "^5.0.7",
+    "tailwind-merge": "^2.3.0",
+    "tailwindcss": "3.4.3",
+    "typescript": "5.4.5",
+    "zod": "^3.23.8",
+    "zustand": "^4.5.2"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "prisma": "^5.14.0"
+  }
+}
