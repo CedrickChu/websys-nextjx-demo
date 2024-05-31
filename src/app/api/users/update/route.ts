@@ -15,14 +15,12 @@ export async function PUT(req: NextRequest) {
   let userData;
 
   try {
-    // Parse the request body as JSON
     userData = await req.json();
   } catch (error) {
     console.error("Error parsing request body:", error);
     return getErrorResponse(400, "Invalid request body");
   }
 
-  // Update user data in the database
   try {
     const updatedUser = await prisma.user.update({
       where: { id: userId },

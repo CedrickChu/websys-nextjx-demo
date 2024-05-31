@@ -116,7 +116,6 @@ export async function apiUpdateAuthUser(token: string, userData: UserData){
     updatedAt?: string;
   }
 
-// Function to fetch all users from the server
 export async function apiGetAllUsers() {
     try {
       const response = await fetch(`${SERVER_ENDPOINT}/api/users/all`);

@@ -65,8 +65,3 @@ export async function POST(req: NextRequest) {
     return getErrorResponse(500, error.message);
   }
 }
-
-
-export const GET = async (req:Request, res:Response) =>  {
-    console.log("GET REQUEST")
-}
