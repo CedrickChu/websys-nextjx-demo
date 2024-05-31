@@ -16,7 +16,7 @@ import {
 function PostList() {
     return (
         <List
-            sort={{ field: 'published_at', order: 'DESC' }}
+            sort={{ field: 'created_at', order: 'DESC' }}
             filters={[<SearchInput source="q" alwaysOn key="q" />]}
             actions={
                 <TopToolbar>
@@ -27,7 +27,7 @@ function PostList() {
             }
         >
             <DatagridConfigurable rowClick="edit">
-                <NumberField sourec="id" />
+                <NumberField source="id" /> 
                 <TextField source="name" />
                 <TextField source="email" />
                 <TextField source="role" />

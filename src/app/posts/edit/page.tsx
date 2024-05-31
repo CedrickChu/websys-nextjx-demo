@@ -21,65 +21,26 @@ function PostEdit() {
             <TabbedForm syncWithLocation={false}>
                 <TabbedForm.Tab label="Content">
                     <TextInput
-                        source="title"
+                        source="name"
                         validate={[required()]}
                         fullWidth
                     />
                     <TextInput
-                        source="teaser"
+                        source="email"
                         validate={[required()]}
                         fullWidth
                         multiline
                     />
-                    <RichTextInput
-                        source="body"
+                    <TextInput
+                        source="role"
                         validate={[required()]}
                         fullWidth
+                        multiline
                     />
-                    <Stack direction="row" spacing={4}>
-                        <DateInput source="published_at" />
-                        <BooleanInput source="commentable" />
-                    </Stack>
-                    <ReferenceArrayInput
-                        label="Tags"
-                        reference="tags"
-                        source="tags"
-                        sortBy="tags.name"
-                        sort={{ field: 'name.en', order: 'ASC' }}
-                    />
+    
+                    
                 </TabbedForm.Tab>
-                <TabbedForm.Tab label="Stats">
-                    <Labeled>
-                        <NumberField source="views" />
-                    </Labeled>
-                    <Labeled>
-                        <NumberField source="average_note" />
-                    </Labeled>
-                </TabbedForm.Tab>
-                <TabbedForm.Tab
-                    label="Comments"
-                    count={
-                        <ReferenceManyCount
-                            reference="comments"
-                            target="post_id"
-                            sx={{ lineHeight: 'inherit' }}
-                        />
-                    }
-                >
-                    <ReferenceManyField
-                        reference="comments"
-                        target="post_id"
-                        sort={{ field: 'created_at', order: 'DESC' }}
-                    >
-                        <SimpleList
-                            primaryText="%{author}"
-                            secondaryText="%{body}"
-                            tertiaryText={record =>
-                                new Date(record.created_at).toLocaleDateString()
-                            }
-                        />
-                    </ReferenceManyField>
-                </TabbedForm.Tab>
+              
             </TabbedForm>
         </Edit>
     );

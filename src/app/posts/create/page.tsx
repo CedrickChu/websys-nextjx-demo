@@ -1,41 +1,44 @@
 import {
     BooleanInput,
-    DateInput,
     Create,
-    ReferenceArrayInput,
     SimpleForm,
     TextInput,
     required,
+    PasswordInput,
+    SelectInput,
+    DateInput,
+    DateField, 
 } from 'react-admin';
-import { RichTextInput } from 'ra-input-rich-text';
 import { Stack } from '@mui/material';
 
 function PostCreate() {
+    const currentDate = new Date().toISOString();
     return (
         <Create>
             <SimpleForm>
-                <TextInput source="title" validate={[required()]} fullWidth />
+                <TextInput source="created_at" defaultValue={currentDate}/>
+                <TextInput source="name" validate={required()} fullWidth />
                 <TextInput
-                    source="teaser"
-                    validate={[required()]}
+                    source="email"
+                    validate={required()}
                     fullWidth
-                    multiline
+                    type="email"
                 />
-                <RichTextInput
-                    source="body"
-                    validate={[required()]}
+                <SelectInput
+                    source="role"
+                    choices={[
+                        { id: 'user', name: 'User' },
+                        { id: 'administrator', name: 'Administrator' },
+                    ]}
+                    validate={required()}
                     fullWidth
                 />
-                <Stack direction="row" spacing={4}>
-                    <DateInput source="published_at" />
-                    <BooleanInput source="commentable" />
-                </Stack>
-                <ReferenceArrayInput
-                    label="Tags"
-                    reference="tags"
-                    source="tags"
-                    sortBy="tags.name"
-                    sort={{ field: 'name.en', order: 'ASC' }}
+                <PasswordInput source="password" validate={required()} fullWidth />
+                <TextInput
+                    source="validatepassword"
+                    validate={required()}
+                    fullWidth
+                    type="password"
                 />
             </SimpleForm>
         </Create>
