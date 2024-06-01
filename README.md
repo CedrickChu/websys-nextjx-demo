@@ -1,4 +1,4 @@
-**NPM INSTALL **--force    - To install depencies
+**NPM INSTALL **--force    - To install dependencies
 
 **NPM RUN DEV  **    - To run the Program
 
