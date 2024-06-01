@@ -10,10 +10,10 @@ import {
 } from 'react-admin';
 import BookIcon from '@mui/icons-material/Book';
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
-import dataProvider from '../posts/dataProvider';
-import PostList from '../posts/lists/page';
-import PostEdit from '../posts/edit/page';
-import PostCreate from '../posts/create/page';
+import dataProvider from '../User/dataProvider';
+import UserList from '../User/lists/page';
+import UserEdit from '../User/edit/page';
+import UserCreate from '../User/create/page';
 import Header from '../../components/Header'; 
 import '../../app/globals.css'
 
@@ -32,9 +32,9 @@ function App() {
         >
             <Resource
                 name="user_lists"
-                list={PostList}
-                edit={PostEdit}
-                create={PostCreate}
+                list={UserList}
+                edit={UserEdit}
+                create={UserCreate}
                 show={ShowGuesser}
                 recordRepresentation="title"
                 icon={BookIcon}
