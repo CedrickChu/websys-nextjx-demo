@@ -54,13 +54,15 @@ const Header = () => {
                 </li>
               </>
             )}
-            {user &&(
+            {user && (
               <>
-                <li>
+                {user.role === 'admin' && (
+                  <li>
                     <Link href='/admin#/user_lists'>
-                        Admin
+                      Admin
                     </Link>
-                </li>
+                  </li>
+                )}
                 <li>
                   <Link href="/profile" >
                     Profile
